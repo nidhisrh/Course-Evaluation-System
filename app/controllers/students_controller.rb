@@ -75,6 +75,10 @@ class StudentsController < ApplicationController
         end
       end
     end
+    if(session[:test_timed_out]==true)
+      session[:test_timed_out]=false
+      flash[:warning] = "Your test is complete"
+    end
     
     #update student section
     if(!params[:section].nil? and !params[:uin].nil?)

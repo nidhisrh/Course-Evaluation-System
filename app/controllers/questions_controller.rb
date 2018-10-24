@@ -192,6 +192,8 @@ class QuestionsController < ApplicationController
       
     #   #redirect_to controller: 'questions', action: 'view', page:@student.choices.count, commit:"Next"
     elsif (params[:commit]!="Submit"&&@student.choices.count==0)
+      session[:test_timed_out] = false
+      session[:quiz_end_time] = DateTime.now + 30
       @questions=Question.where(:content => @evaluation[@student.choices.count])
     elsif true
       flash.discard
