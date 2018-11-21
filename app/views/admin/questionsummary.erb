@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-sm-12 margin-bottom">
+        <a href="/admin/show" class="btn btn-primary btn-lg margin-bottom" role="button">back</a>
+        <h3>Question Summary:</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="t01">
+                <thead class="thead-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Difficulty</th>
+                        <th>Content</th>
+                        <th>Choice 1 Count</th>
+                        <th>Choice 2 Count</th>
+                        <th>Choice 3 Count</th>
+                        <th>Choice 4 Count</th>
+                        <th>Choice 5 Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @all_questions.each do |question| %>
+                        <tr>
+                            <td><%= question.qid %></td>
+                            <td><%= question.difficulty %></td>
+                            <td><%= question.content.html_safe  %></td>
+                            <td><%= question.c1_count %></td>
+                            <td><%= question.c2_count %></td>
+                            <td><%= question.c3_count %></td>
+                            <td><%= question.c4_count %></td>
+                            <td><%= question.c5_count %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="/admin/show" class="btn btn-primary btn-lg margin-bottom" role="button">back</a>
+</div>
