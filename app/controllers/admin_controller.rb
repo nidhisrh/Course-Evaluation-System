@@ -40,7 +40,7 @@ class AdminController < ApplicationController
       evaluation.avg_score = Score.avg_score(evaluation.eid)
       evaluation.max_score = Score.max_score(evaluation.eid)
       evaluation.min_score = Score.min_score(evaluation.eid)
-      evaluation.student_count = Score.select(:students_id).where(evaluations_id: evaluation.eid).uniq.count
+      evaluation.student_count = Score.select(:students_id).where(evaluations_id: evaluation.eid).map(&:students_id).uniq.count
     end
     
     #control panel
