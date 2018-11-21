@@ -6,35 +6,30 @@
         <% end %>
     </div>
     <div class="col-sm-12">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-light">
-                    <tr>
-                        <th>UIN</th>
-                        <th>Name</th>
-                        <th>Section</th>
-                        <th>Attempts</th>
-                        <th>Score</th>
-                        <th>Change Section</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><%= @student.uin %></td>
-                    <td><%= @student.name %></td>
-                    <td><%= @student.section %></td>
-                    <td><%= @student.attempts %></td>
-                    <td><%= @student.score.to_s+"/"+@student.scoretotal.to_s+"(#{((@student.score+0.0)/((@student.scoretotal.nonzero?||1)+0.0)).round(2)})" %></td>
-                    <td><%= form_tag do %>
-                        <%= select_tag 'section', options_for_select(@list_of_sections, @selected_section) %>
-                        <%= submit_tag "Update", :name => "uin[#{@student.uin}]", class: "btn btn-primary btn-sm" %>
-                        <% end %>
-                    </td>
-                </tr>  
-                </tbody>
-            </table>
-        </div>
+        <b>UIN: </b>
+        <%= @student.uin %>
     </div>
+    <div class="col-sm-12">
+        <b>Section: </b>
+        <%= @student.section %>
+    </div>
+    <div class="col-sm-12">
+        <b>Attempts: </b>
+        <%= @student.attempts %>
+    </div>
+    <div class="col-sm-12">
+        <b>Score: </b>
+        <%= @student.score.to_s+"/"+@student.scoretotal.to_s+"(#{((@student.score+0.0)/((@student.scoretotal.nonzero?||1)+0.0)).round(2)})" %>
+    </div>
+    <div class="col-sm-12">
+        
+        <%= form_tag do %>
+            <b>Change Section: </b>
+            <%= select_tag 'section', options_for_select(@list_of_sections, @selected_section) %>
+            <%= submit_tag "Update", :name => "uin[#{@student.uin}]", class: "btn btn-primary btn-sm" %>
+        <% end %>
+    </div>
+    
 </div>
 
 <div class="row">

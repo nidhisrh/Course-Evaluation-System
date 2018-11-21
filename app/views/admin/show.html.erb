@@ -7,7 +7,6 @@
     </div>
     <div class="col-sm-12">
         <h3>Evaluations Summary:</h3>
-        <h4>Overall Average: <%=@average%></h4>
         <div class="table-responsive">
             <table class="table table-bordered table-hover" id="t01">
                 <thead class="thead-light">
@@ -17,6 +16,7 @@
                         <th>Average Score</th>
                         <th>Maximum Score</th>
                         <th>Minimum Score</th>
+                        <th>Student Count</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,50 +27,20 @@
                         <td><%= evaluation.avg_score %></td>
                         <td><%= evaluation.max_score %></td>
                         <td><%= evaluation.min_score %></td>
+                        <td><%= evaluation.student_count %></td>
                       </tr>
                     <% end %>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="col-sm-12 margin-bottom">
-        <h3>Question Summary:</h3>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover" id="t01">
-                <thead class="thead-light">
-                    <tr>
-                        <th>ID</th>
-                        <th>Difficulty</th>
-                        <th>Content</th>
-                        <th>Choice 1 Count</th>
-                        <th>Choice 2 Count</th>
-                        <th>Choice 3 Count</th>
-                        <th>Choice 4 Count</th>
-                        <th>Choice 5 Count</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @all_questions.each do |question| %>
-                        <tr>
-                            <td><%= question.qid %></td>
-                            <td><%= question.difficulty %></td>
-                            <td><%= question.content.html_safe  %></td>
-                            <td><%= question.c1_count %></td>
-                            <td><%= question.c2_count %></td>
-                            <td><%= question.c3_count %></td>
-                            <td><%= question.c4_count %></td>
-                            <td><%= question.c5_count %></td>
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    
     <div class="col-sm-12 margin-bottom">
         <div class="form-group" style="margin: 20px 0px">
             <a href="/admin/questions/show" class="btn btn-primary btn-lg margin-bottom" role="button">Questions Manager</a>
             <a href="/admin/evaluations" class="btn btn-primary btn-lg margin-bottom" role="button">Evaluations Manager</a>
             <a href="/admin/export" class="btn btn-primary btn-lg margin-bottom" role="button">Export Students to CSV</a>
+            <a href="/admin/questionsummary" class="btn btn-primary btn-lg margin-bottom" role="button">Question Summary</a>
         </div>
         <h3>Section Information:</h3>
         <div class="table-responsive">
