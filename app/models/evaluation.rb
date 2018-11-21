@@ -3,4 +3,5 @@ class Evaluation < ApplicationRecord
     attr_accessor :avg_score
     attr_accessor :max_score
     attr_accessor :min_score
+    attr_accessor :student_count
 end
