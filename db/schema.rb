@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181029023552) do
+ActiveRecord::Schema.define(version: 20181120012636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20181029023552) do
     t.datetime "updated_at", null: false
     t.integer "choices", default: [], array: true
     t.integer "scoretotal", default: 0
+    t.string "password"
     t.index ["uin"], name: "index_students_on_uin"
   end
 
