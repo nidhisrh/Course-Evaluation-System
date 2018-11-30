@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181105023751) do
+ActiveRecord::Schema.define(version: 20181130224141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,8 +88,7 @@ ActiveRecord::Schema.define(version: 20181105023751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "students_id"
-    t.bigint "evaluations_id"
-    t.index ["evaluations_id"], name: "index_scores_on_evaluations_id"
+    t.integer "eid"
     t.index ["students_id"], name: "index_scores_on_students_id"
   end
 
@@ -127,7 +126,6 @@ ActiveRecord::Schema.define(version: 20181105023751) do
   add_foreign_key "evaluations", "questions", column: "questions_id"
   add_foreign_key "questions", "question_tags", column: "question_tags_id"
   add_foreign_key "roles", "privilages", column: "privilages_id"
-  add_foreign_key "scores", "evaluations", column: "evaluations_id"
   add_foreign_key "scores", "students", column: "students_id"
   add_foreign_key "sections", "students", column: "students_id"
   add_foreign_key "users", "roles", column: "roles_id"

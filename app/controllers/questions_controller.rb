@@ -64,11 +64,7 @@ class QuestionsController < ApplicationController
     
     session[:choice]=[]
     
-    @score = Score.new
-    @score.score = score
-    @score.students_id = @student.id
-    @score.evaluations_id = @eval[:eid]
-    @score.save
+    
     
     
     @student.score=score
@@ -76,6 +72,12 @@ class QuestionsController < ApplicationController
     @student.attempts+=1
     @student.choices=[]
     @student.save
+    
+    @score = Score.new
+    @score.score = score
+    @score.students_id = @student.id
+    @score.eid = @eval[:eid]
+    @score.save
     
     #puts $global_question_choice_counter
     
