@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181105023751) do
+ActiveRecord::Schema.define(version: 20181201001014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20181105023751) do
     t.string "key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "choices", force: :cascade do |t|
+    t.integer "answers", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "student_id"
+    t.integer "question_id"
+    t.integer "eid"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -69,8 +78,8 @@ ActiveRecord::Schema.define(version: 20181105023751) do
     t.integer "c4_count"
     t.integer "c5_count"
     t.integer "numAnswers", null: false
-    t.string "difficulty"
     t.bigint "question_tags_id"
+    t.string "difficulty"
     t.index ["qid"], name: "index_questions_on_qid"
     t.index ["question_tags_id"], name: "index_questions_on_question_tags_id"
   end
@@ -84,7 +93,7 @@ ActiveRecord::Schema.define(version: 20181105023751) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer "score"
+    t.integer "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "students_id"
