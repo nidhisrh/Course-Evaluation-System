@@ -15,6 +15,10 @@ class AdminController < ApplicationController
     end
   end
   
+  def questionsummary
+    @all_questions = Question.order(:qid)
+  end
+  
   def show
     # if(session[:admin] != "login")
     #   flash.now[:danger]= "You are not logged in!"
@@ -28,7 +32,16 @@ class AdminController < ApplicationController
     
     # uin = params[:uin] # retrieve student ID from URI route
     @students = Student.all.order('id asc') # look up movie by unique ID
-    @average=Student.all.average(:score)
+    @average=Score.all.average(:score)
+    
+    @evaluations = Evaluation.all.order(:title)
+    
+    @evaluations.each do |evaluation|
+      evaluation.avg_score = Score.avg_score(evaluation.eid)
+      evaluation.max_score = Score.max_score(evaluation.eid)
+      evaluation.min_score = Score.min_score(evaluation.eid)
+      evaluation.student_count = Score.select(:students_id).where(evaluations_id: evaluation.eid).map(&:students_id).uniq.count
+    end
     
     #control panel
     #add new section

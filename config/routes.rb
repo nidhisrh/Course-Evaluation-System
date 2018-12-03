@@ -89,6 +89,7 @@ Rails.application.routes.draw do
   
   get 'admin/login'
   get 'admin/show'
+  get 'admin/questionsummary'
   get 'admin/logout'
   get 'admin/export'
   
