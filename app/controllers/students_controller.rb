@@ -11,11 +11,15 @@ class StudentsController < ApplicationController
   
   def welcome
     if(!params[:uin].nil?)
-      uin = params[:uin]
+      uin = params[:uin] || session[:uin]
       if(login(uin) == true)
         redirect_to controller: 'students', action: 'show'
       else
         redirect_to conntroller: 'students', action: 'welcome'
+      end
+    else
+      if(!session[:uin].nil?)
+        redirect_to controller: 'students', action: 'show'
       end
     end
   end
@@ -167,6 +171,7 @@ class StudentsController < ApplicationController
   
   def logout
     session[:uin] = nil
+    params[:uin] = nil
     flash[:success] = "Successful logged out"
     redirect_to controller: 'students', action: 'welcome'
   end

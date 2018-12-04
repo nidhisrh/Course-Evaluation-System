@@ -1,7 +1,7 @@
 class Admin::QuestionsController < ApplicationController
   
   def question_params
-    params.permit(:qid, :content, :c1, :c2, :c3, :c4, :c5, :answer, :numAnswers)
+    params.permit(:qid, :content, :c1, :c2, :c3, :c4, :c5, :answer,:difficulty, :numAnswers)
   end
   
   def create
@@ -19,6 +19,7 @@ class Admin::QuestionsController < ApplicationController
     @question.c4 = question_params[:c4]
     @question.c5 = question_params[:c5]
     answer = question_params[:answer]
+    @question.difficulty = question_params[:difficulty]
 
     @question.answer = @question.c1
     if answer == "2"
