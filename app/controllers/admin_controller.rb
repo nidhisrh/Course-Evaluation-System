@@ -7,11 +7,26 @@ class AdminController < ApplicationController
       @key_hash = AdminKey.first.key
       if(@input_hash == @key_hash)
         session[:admin] = "login"
+        session[:uin] = nil
         redirect_to controller: 'admin', action: 'show'
       else
         flash[:warning] = "Incorrect Key!"
         redirect_to controller: 'admin', action: 'login'
       end
+    end
+  end
+  
+  def changepassword
+    if(!params[:oldkey].nil? and !params[:newkey].nil?)
+      @input_oldhash = Digest::SHA1.hexdigest(params[:oldkey])
+      @input_newhash = Digest::SHA1.hexdigest(params[:newkey])
+      @key_hash = AdminKey.first.key
+      if(@input_oldhash == @key_hash)
+        AdminKey.update(1, key: @input_newhash)
+        flash[:success] = "Changed password successfully!"
+        redirect_to controller: 'admin', action: 'show'
+      end
+      
     end
   end
   

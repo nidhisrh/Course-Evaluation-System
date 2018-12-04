@@ -38,6 +38,7 @@ class StudentsController < ApplicationController
     else
       #set session key
       session[:uin] = uin
+      session[:admin] = nil
       return true
     end
   end
@@ -130,7 +131,7 @@ class StudentsController < ApplicationController
     #debugger
     if(res == true)
       if(@student.save)
-        redirect_to action: "register"
+        redirect_to action: "welcome"
       end
     else
       redirect_to action: "register"
