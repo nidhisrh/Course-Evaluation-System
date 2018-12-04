@@ -44,20 +44,20 @@ Section.create!([
   {section_number: 500, students_id: nil}
 ])
 Student.create!([
-  {uin: 123000123, name: "Ruth Morris", section: 501, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: 0, password: nil},
-  {uin: 222007338, name: "Siru Li", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 111222333, name: "Alice Hernandez", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 222333444, name: "Bob Nguyen", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 333444555, name: "Eve Yang", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 444555666, name: "George Agarwal", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 555666777, name: "Jet Li", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 123456789, name: "SAI ESWAR", section: 500, attempts: 2, score: 0, last_start: nil, last_end: nil, choices: [], scoretotal: 0, password: nil},
-  {uin: 123000123, name: "Ruth Morris", section: 501, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: 0, password: nil},
-  {uin: 222007338, name: "Siru Li", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 111222333, name: "Alice Hernandez", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 222333444, name: "Bob Nguyen", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 333444555, name: "Eve Yang", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 444555666, name: "George Agarwal", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 555666777, name: "Jet Li", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: nil},
-  {uin: 927008613, name: "SAI ESWAR", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1, password: "36anvay36"}
+  {uin: 123000123, name: "Ruth Morris", section: 501, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: 0},
+  {uin: 222007338, name: "Siru Li", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 111222333, name: "Alice Hernandez", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 222333444, name: "Bob Nguyen", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 333444555, name: "Eve Yang", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 444555666, name: "George Agarwal", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 555666777, name: "Jet Li", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 123456789, name: "SAI ESWAR", section: 500, attempts: 2, score: 0, last_start: nil, last_end: nil, choices: [], scoretotal: 0},
+  {uin: 123000123, name: "Ruth Morris", section: 501, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: 0},
+  {uin: 222007338, name: "Siru Li", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 111222333, name: "Alice Hernandez", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 222333444, name: "Bob Nguyen", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 333444555, name: "Eve Yang", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 444555666, name: "George Agarwal", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 555666777, name: "Jet Li", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1},
+  {uin: 927008613, name: "SAI ESWAR", section: 500, attempts: 0, score: -1, last_start: nil, last_end: nil, choices: [], scoretotal: -1}
 ])
