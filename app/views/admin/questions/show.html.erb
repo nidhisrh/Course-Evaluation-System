@@ -1,22 +1,23 @@
 <div class="row">
     <div class="col-sm-12">
+        <a href="/admin/show" class="btn btn-primary btn-lg margin-bottom" role="button">back</a>
         <h1>Question Manager</h1>
         <p>Create, update, and remove questions.</p>
         <% flash.each do |key, value| %>
             <div class="alert alert-<%= key %>"><%= value %></div>
         <% end %>
     </div>
-    <div class="col-sm-12">
+    <div class="col-lg-12">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover" style="table-layout: fixed; width: 100%;">
+            <table class="table table-bordered table-hover" width="100%" >
                 <thead class="thead-light">
                    <tr>
-                        <th width="5%">ID</th>
-                        <th width=10%">Difficulty</th>
-                        <th width="20%">Content</th>
-                        <th width="10%">Answer</th>
-                        <th width="10%">Choice 1</th>
-                        <th width="10%">Choice 2</th>
+                        <th >ID</th>
+                        <th >Difficulty</th>
+                        <th >Content</th>
+                        <th >Answer</th>
+                        <th >Choice 1</th>
+                        <th >Choice 2</th>
                         <th>Choice 3</th>
                         <th>Choice 4</th>
                         <th>Choice 5</th>
@@ -29,13 +30,25 @@
                         <tr>
                             <td><%= link_to question.qid, "/admin/questions/edit/#{question.qid}" %></td>
                             <td class="break"><%= question.difficulty %></td>
-                            <td class="break"><%= question.content.truncate(500) %></td>
-                            <td class="break"><%= question.answer %></td>
-                            <td class="break"><%= question.c1 %></td>
-                            <td class="break"><%= question.c2 %></td>
-                            <td class="break"><%= question.c3 %></td>
-                            <td class="break"><%= question.c4 %></td>
-                            <td class="break"><%= question.c5 %></td>
+                            <td class="break"><%= question.content.html_safe %></td>
+                            <td class="break"><%= question.answer.html_safe %></td>
+                            <td class="break"><%= question.c1.html_safe %></td>
+                            <td class="break"><%= question.c2.html_safe %></td>
+                            <% if question.c3!=nil %>
+                            <td class="break"><%= question.c3.html_safe %></td>
+                            <% else %>
+                            <td class="break"></td>
+                            <% end %>
+                            <% if question.c4!=nil %>
+                            <td class="break"><%= question.c4.html_safe %></td>
+                            <% else %>
+                            <td class="break"></td>
+                            <% end %>
+                            <% if question.c5!=nil %>
+                            <td class="break"><%= question.c5.html_safe  %></td>
+                            <% else %>
+                            <td class="break"></td>
+                            <% end %>
                             <td><%= link_to 'Remove', "/admin/questions/delete/#{question.qid}", :method => :delete, :id => "remove#{question.qid}"%></td>
                             <td><%= link_to 'Copy', "/admin/questions/copy/#{question.qid}", :method => :put %></td>
                         </tr>

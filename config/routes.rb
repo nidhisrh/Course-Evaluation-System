@@ -88,6 +88,7 @@ Rails.application.routes.draw do
   get 'welcome/show'
   
   get 'admin/login'
+  get 'admin/changepassword'
   get 'admin/show'
   get 'admin/questionsummary'
   get 'admin/logout'
@@ -112,6 +113,7 @@ Rails.application.routes.draw do
   post 'students/practice', :as => :students_practice
   post 'students/show'
   post 'admin/login'
+  post 'admin/changepassword'
   post 'admin/show'
   
   match '/questions', to: 'questions#view', via: [:get, :post]

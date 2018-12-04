@@ -22,6 +22,10 @@
 <%= select_tag(:answer, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']]))%>
 
 </h3>
+
+<h3>Difficulty Level
+<%= select_tag(:difficulty, options_for_select([['Easy', 'easy'], ['Medium', 'medium'], ['Hard', 'hard']]))%></h3>
+
 <%= tinymce %>
 <div class="form-group" style="margin: 20px 0px">
     <a href="/admin/questions/show" class="btn btn-primary btn-lg">Cancel</a>
