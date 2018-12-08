@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-sm-12 margin-bottom">
+        <a href="/admin/show" class="btn btn-primary btn-lg margin-bottom" role="button">Back</a>
+        <h3>TA List:</h3>
+        <div class="col-sm-12">
+            <% flash.each do |key, value| %>
+                <div class="alert alert-<%= key %>"><%= value %></div>
+            <% end %>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="t01">
+                <thead class="thead-light">
+                    <tr>
+                        <th>UIN</th>
+                        <th>Name</th>
+                        <th>Approve</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @all_ta.each do |ta| %>
+                        <tr>
+                            <td><%= ta.uin %></td>
+                            <td><%= ta.name %></td>
+                            <% if(ta.isapproved) then approvetext = 'Unapprove' else approvetext = 'Approve' end %>
+                            <td><%= link_to approvetext, "/ta/changeapprovestatus?id="+ta.id.to_s %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
