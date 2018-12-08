@@ -123,7 +123,9 @@ class StudentsController < ApplicationController
   
   def create
     params.permit! #allow mass assignment
-    @student = Student.new(params[:student])
+    newparams = params[:student]
+    newparams.delete :cp
+    @student = Student.new(newparams)
     @student.attempts = 0
     @student.score = -1
     @student.scoretotal=-1

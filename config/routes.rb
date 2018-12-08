@@ -95,6 +95,7 @@ Rails.application.routes.draw do
   get 'admin/show'
   get 'admin/questionsummary'
   get 'admin/logout'
+  get 'ta/logout'
   get 'admin/export'
   
   get 'students/welcome'

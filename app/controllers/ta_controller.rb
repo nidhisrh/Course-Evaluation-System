@@ -28,8 +28,9 @@ class TaController < ApplicationController
         flash[:warning] = "TA not yet approved by admin"
         return falses
       else
-        #set session key
+        #set session keys
         session[:admin] = "login"
+        session[:ta] = "login"
         return true
       end
     end
@@ -170,6 +171,7 @@ class TaController < ApplicationController
   
   def logout
     session[:admin] = ""
+    session[:ta] = ""
     flash[:success] = "Successfully logged out!"
     redirect_to controller: 'ta', action: 'show'
   end
