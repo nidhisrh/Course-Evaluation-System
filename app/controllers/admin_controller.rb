@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :check_admin_login, only: [:login]
+  before_action :check_admin_login, only: [:show]
   
   def login
     if(!params[:key].nil?)
@@ -147,7 +147,11 @@ class AdminController < ApplicationController
       
   def check_admin_login
     if(logged_in?)
-        redirect_to controller: 'admin', action: 'show'
+        session[:ta]=nil
+    elsif (session[:ta]=="login")
+        redirect_to controller: 'ta', action: 'show'
+    else
+        redirect_to controller: 'admin', action: 'login'
     end
   end
   
