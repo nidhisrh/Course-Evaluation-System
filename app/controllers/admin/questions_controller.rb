@@ -70,6 +70,7 @@ class Admin::QuestionsController < ApplicationController
       @question.c4 = question_params[:c4]
       @question.c5 = question_params[:c5]
       answer = question_params[:answer]
+      @question.difficulty = question_params[:difficulty]
   
       @question.answer = @question.c1
       if answer == "2"
@@ -185,6 +186,7 @@ class Admin::QuestionsController < ApplicationController
       new_question.c4 = question.c4
       new_question.c5 = question.c5
       new_question.answer = question.answer
+      new_question.difficulty = question.difficulty
       new_question.parameters = question.parameters
       new_question.c1_count = 0
       new_question.c2_count = 0
