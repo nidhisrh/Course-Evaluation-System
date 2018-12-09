@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
+        <a href="/admin/show" class="btn btn-primary btn-lg margin-bottom" role="button">back</a>
         <h1>Student Data Export</h1>
         <p>Export student data including UIN, Name, Section, Attempts, and Scores to a CSV.</p>
         <%= button_to "Display all", {:controller => "admin", :action => "export", :display_all => 1}, :method => :post, :class => "btn btn-primary" %>

@@ -1,17 +1,32 @@
 class AdminController < ApplicationController
-  before_action :check_admin_login, only: [:show]
+  before_action :check_admin_login, only: [:login]
   
   def login
     if(!params[:key].nil?)
       @input_hash = Digest::SHA1.hexdigest(params[:key])
       @key_hash = AdminKey.first.key
-      if(@input_hash == @key_hash)
+      if(@input_hash == @key_hash and session[:ta]!="login")
         session[:admin] = "login"
+        session[:uin] = nil
         redirect_to controller: 'admin', action: 'show'
       else
         flash[:warning] = "Incorrect Key!"
         redirect_to controller: 'admin', action: 'login'
       end
+    end
+  end
+  
+  def changepassword
+    if(!params[:oldkey].nil? and !params[:newkey].nil?)
+      @input_oldhash = Digest::SHA1.hexdigest(params[:oldkey])
+      @input_newhash = Digest::SHA1.hexdigest(params[:newkey])
+      @key_hash = AdminKey.first.key
+      if(@input_oldhash == @key_hash)
+        AdminKey.update(1, key: @input_newhash)
+        flash[:success] = "Changed password successfully!"
+        redirect_to controller: 'admin', action: 'show'
+      end
+      
     end
   end
   
@@ -40,7 +55,7 @@ class AdminController < ApplicationController
       evaluation.avg_score = Score.avg_score(evaluation.eid)
       evaluation.max_score = Score.max_score(evaluation.eid)
       evaluation.min_score = Score.min_score(evaluation.eid)
-      evaluation.student_count = Score.select(:students_id).where(evaluations_id: evaluation.eid).map(&:students_id).uniq.count
+      evaluation.student_count = Score.select(:students_id).where(eid: evaluation.eid).map(&:students_id).uniq.count
     end
     
     #control panel
@@ -123,16 +138,16 @@ class AdminController < ApplicationController
   def logout
     session[:admin] = ""
     flash[:success] = "Successfully logged out!"
-    redirect_to controller: 'admin', action: 'show'
+    redirect_to controller: 'admin', action: 'login'
   end
   
   def logged_in?
-      session[:admin] == "login"
+      session[:admin] == "login" and session[:ta] != "login"
   end
       
   def check_admin_login
-    unless logged_in?
-        redirect_to controller: 'admin', action: 'login'
+    if(logged_in?)
+        redirect_to controller: 'admin', action: 'show'
     end
   end
   

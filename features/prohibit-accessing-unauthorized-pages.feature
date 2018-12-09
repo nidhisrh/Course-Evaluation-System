@@ -9,10 +9,6 @@ Background:
     |99f427c0c6a2411bc8a046f26c8aa4cb45bba27f |
   
 #### admin side ###
-
-Scenario: admin pages
-  Given I am on the admin page
-  Then I should be on the admin login page
   
 Scenario: questions manager
   Given I am on the questions manager page

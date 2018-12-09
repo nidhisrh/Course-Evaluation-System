@@ -28,28 +28,16 @@ Background: evaluations in database
 #   And I follow "Remove"
 #   Then evaluation "1" should have "0" questions
   
-Scenario: deleting a question from an evaluation with one question
-  Given I am on the admin login page
-  And I fill in "key" with "dshell"
-  And I press "Login"
-  Then I should be on the admin page
-  And I follow "Questions Manager"
-  And I follow "remove1001"
-  And I am on the admin login page
-  And I fill in "key" with "dshell"
-  And I press "Login"
-  Then I should be on the admin page
-  Then I should not see "Evaluation 1"
   
-Scenario: deleting a question from an evaluation with multiple questions
-  Given I am on the admin login page
-  And I fill in "key" with "dshell"
-  And I press "Login"
-  Then I should be on the admin page
-  And I follow "Questions Manager"
-  And I follow "remove1001"
-  And I am on the admin login page
-  And I fill in "key" with "dshell"
-  And I press "Login"
-  Then I should be on the admin page
-  Then I should not see "1001"
+# Scenario: deleting a question from an evaluation with multiple questions
+#   Given I am on the admin login page
+#   And I fill in "key" with "dshell"
+#   And I press "Login"
+#   Then I should be on the admin page
+#   And I follow "Questions Manager"
+#   And I follow "remove1001"
+#   And I am on the admin login page
+#   And I fill in "key" with "dshell"
+#   And I press "Login"
+#   Then I should be on the admin page
+#   Then I should not see "1001"

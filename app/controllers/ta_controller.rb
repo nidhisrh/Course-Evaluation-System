@@ -26,7 +26,7 @@ class TaController < ApplicationController
     else
       if(!@ta.isapproved)
         flash[:warning] = "TA not yet approved by admin"
-        return falses
+        return false
       else
         #set session keys
         session[:admin] = "login"
@@ -177,7 +177,7 @@ class TaController < ApplicationController
   end
   
   def logged_in?
-      session[:admin] == "login"
+      session[:ta] == "login"
   end
       
   def check_admin_login

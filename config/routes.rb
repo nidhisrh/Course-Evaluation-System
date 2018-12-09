@@ -92,7 +92,9 @@ Rails.application.routes.draw do
   get 'ta/showlist'
   get 'ta/changeapprovestatus'
   get 'ta/show'
+  get 'admin/changepassword'
   get 'admin/show'
+  get 'admin/login'
   get 'admin/questionsummary'
   get 'admin/logout'
   get 'ta/logout'
@@ -120,6 +122,7 @@ Rails.application.routes.draw do
   post 'students/show'
   post 'admin/login'
   post 'ta/login'
+  post 'admin/changepassword'
   post 'admin/show'
   
   match '/questions', to: 'questions#view', via: [:get, :post]
@@ -136,7 +139,7 @@ Rails.application.routes.draw do
   
   
   get 'about', to: 'about#show'
-  get 'admin', to: 'admin#show'
+  get 'admin', to: 'admin#login'
   get 'admin/evaluations', to: 'evaluations#show'
   post 'admin/evaluations', to: 'evaluations#show'
   get 'admin/evaluations/view/:id', to: 'evaluations#view'

@@ -18,6 +18,10 @@ class StudentsController < ApplicationController
       else
         redirect_to conntroller: 'students', action: 'welcome'
       end
+    else
+      if(!session[:uin].nil?)
+        redirect_to controller: 'students', action: 'show'
+      end
     end
   end
   
@@ -40,6 +44,7 @@ class StudentsController < ApplicationController
     else
       #set session key
       session[:uin] = uin
+      session[:admin] = nil
       return true
     end
   end
@@ -134,7 +139,7 @@ class StudentsController < ApplicationController
     #debugger
     if(res == true)
       if(@student.save)
-        redirect_to action: "register"
+        redirect_to action: "welcome"
       end
     else
       redirect_to action: "register"
@@ -170,6 +175,7 @@ class StudentsController < ApplicationController
   
   def logout
     session[:uin] = nil
+    params[:uin] = nil
     flash[:success] = "Successful logged out"
     redirect_to controller: 'students', action: 'welcome'
   end

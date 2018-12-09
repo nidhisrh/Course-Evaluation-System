@@ -33,9 +33,9 @@ Scenario: Login with wrong key
   And I press "Login"
   Then I should see "Incorrect Key!"
   
-Scenario: Non-existing session
+Scenario: Existing session
   Given I am on the admin page
-  Then I should be on the admin login page
+  Then I should be on the admin show page
 
 Scenario: Add a new section
   Given I am on the admin login page
@@ -72,14 +72,6 @@ Scenario: Delete a section
   And I press "Delete"
   Then I should not see "501"
   
-Scenario: Update a student's section from admin
-  Given I am on the admin login page
-  And I fill in "key" with "dshell"
-  And I press "Login"
-  Then I should be on the admin page
-  And I select "501" from "section"
-  And I press "Update"
-  Then the section of "Ruth Morris" should be "501"
 
 Scenario: Admin logout
   Given I am on the admin login page
