@@ -6,9 +6,6 @@
         <% end %>
     </div>
     
-     
-    <a style = "float:right" href="/ta/showlist" class="btn btn-primary btn-lg margin-bottom" role="button">Approve TA</a>
-    
     <div class="col-sm-12">
         <h3>Evaluations Summary:</h3>
         <div class="table-responsive">
@@ -45,7 +42,6 @@
             <a href="/admin/evaluations" class="btn btn-primary btn-lg margin-bottom" role="button">Evaluations Manager</a>
             <a href="/admin/export" class="btn btn-primary btn-lg margin-bottom" role="button">Export Students to CSV</a>
             <a href="/admin/questionsummary" class="btn btn-primary btn-lg margin-bottom" role="button">Question Summary</a>
-            <a href="/admin/changepassword" class="btn btn-primary btn-lg margin-bottom" role="button">Change Password</a>
         </div>
         <h3>Section Information:</h3>
         <div class="table-responsive">
@@ -71,20 +67,6 @@
             <label for="section_number">Section Number:</label>
             <%= number_field_tag :section_number %>
             <button type="submit" class="btn btn-primary">Add</button>
-        <% end %>
-    </div>
-    <div class="col-sm-12">
-        <h3>Delete All Students:</h3>
-        <%= form_tag do%>
-            <p>Please type the following text in the text box to confirm deletion: </p>
-            <h4>"I want to delete all students in the database, and I understand that once deleted, they are not recoverable."</h4>
-            <div class="form-group">
-                <label for="disclaimer">Disclaimer:</label>
-                <%= text_field_tag :disclaimer %>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-danger">Reset Student Database</button>
-            </div>
         <% end %>
     </div>
 </div>

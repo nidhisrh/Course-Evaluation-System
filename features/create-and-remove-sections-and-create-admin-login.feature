@@ -2,8 +2,8 @@ Feature: create and remove sections and create admin login
   
 Background: students and sections in database
   Given the following students exist:
-    |uin        |name           |section    |attempts   |score  |last_start                 |last_end                   |created_at     |updated_at  |
-    |123000123  |Ruth Morris    |500        |0          |-1     |2018-03-10 17:00:00 UTC    |2018-03-10 20:00:00 UTC    |               |            |
+  | uin          | name            | section      |    attempts  | score|last_start              |last_end                |created_at |updated_at|choices |scoretotal | password   |
+  | 123000123    | Ruth Morris     | 500          |   0          |  -1  |2018-03-10 17:00:00 UTC |2018-03-10 20:00:00 UTC |           |          |        |0          | 123        |
 
   Given the following sections exist:
     |section_number    |
@@ -20,6 +20,7 @@ Background: students and sections in database
 Scenario: update section through student portal
   Given I am on the student login page
   And I fill in "uin" with "123000123"
+  And I fill in "password" with "123"
   And I press "Login"
   Then I should be on the student personal page
   And I select "501" from "section"
@@ -32,9 +33,9 @@ Scenario: Login with wrong key
   And I press "Login"
   Then I should see "Incorrect Key!"
   
-Scenario: Non-existing session
+Scenario: Existing session
   Given I am on the admin page
-  Then I should be on the admin login page
+  Then I should be on the admin show page
 
 Scenario: Add a new section
   Given I am on the admin login page

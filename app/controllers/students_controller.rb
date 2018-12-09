@@ -11,8 +11,9 @@ class StudentsController < ApplicationController
   
   def welcome
     if(!params[:uin].nil?)
-      uin = params[:uin] || session[:uin]
-      if(login(uin) == true)
+      uin = params[:uin]
+      password=params[:password]
+      if(login(uin,password) == true)
         redirect_to controller: 'students', action: 'show'
       else
         redirect_to conntroller: 'students', action: 'welcome'
@@ -27,7 +28,7 @@ class StudentsController < ApplicationController
   def instructions
   end
   
-  def login(uin)
+  def login(uin,password)
     #first check if input is legal
     if(uin.to_i > 999999999 || uin.to_i < 100000000)
       flash[:warning] = "Please enter a valid UIN!"
@@ -35,9 +36,10 @@ class StudentsController < ApplicationController
     end
     
     #then validate
-    @student = Student.where(uin: uin.to_i).first
+    @student = Student.where(uin: uin.to_i,password: password).first
+    
     if(@student.nil?)
-      flash[:warning] = "UIN not registered!"
+      flash[:warning] = "UIN not registered or UIN and password does not match!"
       return false
     else
       #set session key
@@ -126,7 +128,9 @@ class StudentsController < ApplicationController
   
   def create
     params.permit! #allow mass assignment
-    @student = Student.new(params[:student])
+    newparams = params[:student]
+    newparams.delete :cp
+    @student = Student.new(newparams)
     @student.attempts = 0
     @student.score = -1
     @student.scoretotal=-1

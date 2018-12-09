@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>TA Register</h1>
+    <p>Register for an account. All TA's can only login once the admin has approved their registration.</p>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  </div>
+  <div class="col-sm-12">
+      <%= form_for @ta do |f| %>
+        <%= f.label :uin, 'UIN: ' %><%= f.number_field :uin %><br>
+        <%= f.label :name, 'Name: ' %><%= f.text_field :name %><br>
+        <%= f.label :password, 'Password: ' %><%= f.password_field :password %><br>
+        <%= f.label :password, ' Confirm Password: ' %><%= f.password_field :password %><br>
+        <%= f.submit "Register TA", :class => "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

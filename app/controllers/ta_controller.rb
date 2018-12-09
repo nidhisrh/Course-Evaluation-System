@@ -1,34 +1,68 @@
-class AdminController < ApplicationController
-  before_action :check_admin_login, only: [:login]
+class TaController < ApplicationController
+  before_action :check_admin_login, only: [:show]
   
   def login
-    if(!params[:key].nil?)
-      @input_hash = Digest::SHA1.hexdigest(params[:key])
-      @key_hash = AdminKey.first.key
-      if(@input_hash == @key_hash and session[:ta]!="login")
-        session[:admin] = "login"
-        session[:uin] = nil
-        redirect_to controller: 'admin', action: 'show'
+    if(!params[:uin].nil?)
+      if(logincheck(params[:uin],params[:password]))
+        redirect_to controller: 'ta', action: 'show'
       else
-        flash[:warning] = "Incorrect Key!"
-        redirect_to controller: 'admin', action: 'login'
+        redirect_to conntroller: 'ta', action: 'login'
+      end
+    end
+  end
+ 
+  def logincheck(uin,password)
+    #first check if input is legal
+    if(uin.to_i > 999999999 || uin.to_i < 100000000)
+      flash[:warning] = "Please enter a valid UIN!"
+      return false
+    end
+    
+    #then validate
+    @ta = User.where(uin: uin.to_i,password: password).first
+    if(@ta.nil?)
+      flash[:warning] = "TA not registered or UIN and password do not match!"
+      return false
+    else
+      if(!@ta.isapproved)
+        flash[:warning] = "TA not yet approved by admin"
+        return false
+      else
+        #set session keys
+        session[:admin] = "login"
+        session[:ta] = "login"
+        return true
       end
     end
   end
   
-  def changepassword
-    if(!params[:oldkey].nil? and !params[:newkey].nil?)
-      @input_oldhash = Digest::SHA1.hexdigest(params[:oldkey])
-      @input_newhash = Digest::SHA1.hexdigest(params[:newkey])
-      @key_hash = AdminKey.first.key
-      if(@input_oldhash == @key_hash)
-        AdminKey.update(1, key: @input_newhash)
-        flash[:success] = "Changed password successfully!"
-        redirect_to controller: 'admin', action: 'show'
+  
+  def showlist
+    @all_ta = User.all
+  end
+  
+  def register
+  #  @all_students = Student.all
+    @ta = User.new
+   # @sections = Section.all.order('section_number asc')
+  end
+  
+  def changeapprovestatus
+    if(params[:id])
+      @user = User.where(id: params[:id].to_i).first
+      if(@user.isapproved)
+        @user.isapproved = false
+        approvetext = "Unapproved"
+      else
+        @user.isapproved = true
+        approvetext = "Approved"
       end
-      
+      @user.save
+      flash[:success] = "Registration Status of TA " + @user.name + " is Changed to " + approvetext
+      redirect_to controller: 'ta', action: 'showlist'
     end
   end
+  
   
   def questionsummary
     @all_questions = Question.order(:qid)
@@ -55,7 +89,7 @@ class AdminController < ApplicationController
       evaluation.avg_score = Score.avg_score(evaluation.eid)
       evaluation.max_score = Score.max_score(evaluation.eid)
       evaluation.min_score = Score.min_score(evaluation.eid)
-      evaluation.student_count = Score.select(:students_id).where(eid: evaluation.eid).map(&:students_id).uniq.count
+      evaluation.student_count = Score.select(:students_id).where(evaluations_id: evaluation.eid).map(&:students_id).uniq.count
     end
     
     #control panel
@@ -69,11 +103,11 @@ class AdminController < ApplicationController
         @new_section.section_number = params[:section_number]
         @new_section.save
         flash[:success] = "Sections added!"
-        redirect_to controller: 'admin', action: 'show'
+        redirect_to controller: 'ta', action: 'show'
       end
     elsif(!params[:section_number].nil? and !unique_section(params[:section_number]))
       flash[:warning] = "Section already exists"
-      redirect_to controller: 'admin', action: 'show'
+      redirect_to controller: 'ta', action: 'show'
     end
     
     #update a student's section
@@ -102,7 +136,7 @@ class AdminController < ApplicationController
   def delete
     if(session[:admin] != "login")
       # return
-      redirect_to controller: 'admin', action: 'show'
+      redirect_to controller: 'ta', action: 'show'
     else
       Section.where(section_number: params[:value]).first.destroy
       
@@ -114,7 +148,7 @@ class AdminController < ApplicationController
         @students_in_this_section[i].save
       end
       flash[:success] = "section deleted!"
-      redirect_to controller: 'admin', action: 'show'
+      redirect_to controller: 'ta', action: 'show'
     end
   end
   
@@ -137,17 +171,18 @@ class AdminController < ApplicationController
   
   def logout
     session[:admin] = ""
+    session[:ta] = ""
     flash[:success] = "Successfully logged out!"
-    redirect_to controller: 'admin', action: 'login'
+    redirect_to controller: 'ta', action: 'show'
   end
   
   def logged_in?
-      session[:admin] == "login" and session[:ta] != "login"
+      session[:ta] == "login"
   end
       
   def check_admin_login
-    if(logged_in?)
-        redirect_to controller: 'admin', action: 'show'
+    unless logged_in?
+        redirect_to controller: 'ta', action: 'login'
     end
   end
   

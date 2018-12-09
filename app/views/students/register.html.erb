@@ -10,8 +10,10 @@
       <%= form_for @student do |f| %>
         <%= f.label :uin, 'UIN: ' %><%= f.number_field :uin %><br>
         <%= f.label :name, 'Name: ' %><%= f.text_field :name %><br>
+        <%= f.label :password, 'Password: ' %><%= f.password_field :password %><br>
+        <%= f.label :cp, ' Confirm Password: ' %><%= f.password_field :cp %><br>
         <%= f.label :section, 'Section: ' %><%= f.select "section", options_from_collection_for_select(@sections, "section_number", "section_number")  %><br>
-        <%= f.submit "Create Student", :class => "btn btn-primary" %>
+        <%= f.submit "Register Student", :class => "btn btn-primary" %>
     <% end %>
   </div>
 </div>

@@ -88,14 +88,21 @@ Rails.application.routes.draw do
   get 'welcome/show'
   
   get 'admin/login'
+  get 'ta/login'
+  get 'ta/showlist'
+  get 'ta/changeapprovestatus'
+  get 'ta/show'
   get 'admin/changepassword'
   get 'admin/show'
+  get 'admin/login'
   get 'admin/questionsummary'
   get 'admin/logout'
+  get 'ta/logout'
   get 'admin/export'
   
   get 'students/welcome'
   get 'students/register'
+  get 'ta/register'
   get 'students/logout'
   get 'students/show'
   
@@ -108,17 +115,20 @@ Rails.application.routes.draw do
   post 'students/welcome'
 
   post 'admin/delete'
+  post 'ta/delete'
   post 'admin/update'
   
   post 'students/practice', :as => :students_practice
   post 'students/show'
   post 'admin/login'
+  post 'ta/login'
   post 'admin/changepassword'
   post 'admin/show'
   
   match '/questions', to: 'questions#view', via: [:get, :post]
   
   resources :students
+  resources :users
   
   resources :questions, only: [:view], via: [:post]
   
@@ -129,7 +139,7 @@ Rails.application.routes.draw do
   
   
   get 'about', to: 'about#show'
-  get 'admin', to: 'admin#show'
+  get 'admin', to: 'admin#login'
   get 'admin/evaluations', to: 'evaluations#show'
   post 'admin/evaluations', to: 'evaluations#show'
   get 'admin/evaluations/view/:id', to: 'evaluations#view'

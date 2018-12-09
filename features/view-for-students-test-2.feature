@@ -2,8 +2,8 @@ Feature: View for the students test 2
 
 Background: evaluations in database
   Given the following students exist:
-  | uin          | name            | section      |    attempts  | score|last_start              |last_end                |created_at |updated_at|
-  | 123000123    | Ruth Morris     | 500          |   0          |  -1  |2018-03-10 17:00:00 UTC |2018-03-10 20:00:00 UTC |           |          |
+  | uin          | name            | section      |    attempts  | score|last_start              |last_end                |created_at |updated_at|choices |scoretotal | password   |
+  | 123000123    | Ruth Morris     | 500          |   0          |  -1  |2018-03-10 17:00:00 UTC |2018-03-10 20:00:00 UTC |           |          |        |0          | 123      |
   
   Given the following questions exist:
   | qid   | content                               | answer|c1     | c2   | c3    | c4    | c5    |c1_count|c2_count|c3_count|c4_count|c5_count| numAnswers |
@@ -28,6 +28,7 @@ Scenario: view for the student's test
   And I follow "For Students"
   Then I should be on the student login page
   And I fill in "uin" with "123000123"
+  And I fill in "password" with "123"
   And I press "Login"
   Then I should be on the student personal page
   And I fill in "access_code" with "CSCE120"
@@ -48,6 +49,7 @@ Scenario: view for the student's test2
   And I follow "For Students"
   Then I should be on the student login page
   And I fill in "uin" with "123000123"
+  And I fill in "password" with "123"
   And I press "Login"
   Then I should be on the student personal page
   And I fill in "access_code" with "CSCE120"
@@ -68,6 +70,7 @@ Scenario: view for the student's test3
   And I follow "For Students"
   Then I should be on the student login page
   And I fill in "uin" with "123000123"
+  And I fill in "password" with "123"
   And I press "Login"
   Then I should be on the student personal page
   And I fill in "access_code" with "CSCE120"
@@ -88,6 +91,7 @@ Scenario: view for the student's test4
   And I follow "For Students"
   Then I should be on the student login page
   And I fill in "uin" with "123000123"
+  And I fill in "password" with "123"
   And I press "Login"
   Then I should be on the student personal page
   And I fill in "access_code" with "CSCE120"
@@ -108,6 +112,7 @@ Scenario: view for the student's test5
   And I follow "For Students"
   Then I should be on the student login page
   And I fill in "uin" with "123000123"
+  And I fill in "password" with "123"
   And I press "Login"
   Then I should be on the student personal page
   And I fill in "access_code" with "CSCE120"

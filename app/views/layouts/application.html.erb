@@ -26,7 +26,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="">
-              <% if session[:admin]=='login' %>
+              <% if session[:ta]=='login' %>
+                <a href="/ta/logout">Logout as TA</a>
+              <% end %>
+            </li>
+            <li class="">
+              <% if session[:admin]=='login' and session[:ta] != 'login' %>
                 <a href="/admin/logout">Logout as Professor</a>
               <% end %>
             </li>
