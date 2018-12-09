@@ -1,4 +1,5 @@
 <%= form_for @new_question, :url => {:controller => "/admin/questions", :action => "create"} do |f| %>
+<a href="/admin/questions/show" class="btn btn-primary btn-lg margin-bottom" role="button">back</a>
 <h1>Create a new question:</h1>
 <p>This question will only have 3 answers and each one can be scaled from 0 to 5 points.</p>
 <%= hidden_field_tag(:numAnswers, "3") %>

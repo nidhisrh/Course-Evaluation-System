@@ -1,4 +1,5 @@
 <%= form_for @evaluation, :url => {:action => "view"} do |f| %>
+    <a href="/admin/evaluations" class="btn btn-primary btn-lg margin-bottom" role="button">back</a>
     <h1>Evaluation <%= @evaluation.eid %>: <%= @evaluation.title %></h1>
     <%= hidden_field_tag :eid, @evaluation.eid %>
     <% counter=0 %>

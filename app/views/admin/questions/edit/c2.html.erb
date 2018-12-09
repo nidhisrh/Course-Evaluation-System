@@ -1,4 +1,5 @@
 <%= form_for @question, :url => {:controller => "/admin/questions", :action => "update"} do |f| %>
+    <a href="/admin/questions/show" class="btn btn-primary btn-lg margin-bottom" role="button">back</a>
     <h1>Edit Question: <%= @question.qid %></h1>
     <%= hidden_field_tag :qid, @question.qid %>
     
