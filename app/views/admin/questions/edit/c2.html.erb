@@ -14,6 +14,10 @@
     <h3>Correct Answer Choice:
     <%= select_tag(:answer, options_for_select([['1', 1], ['2', 2]], @answer))%>
     </h3>
+    
+    <h3>Difficulty Level
+    <%= select_tag(:difficulty, options_for_select([['Easy', 'easy'], ['Medium', 'medium'], ['Hard', 'hard']]))%></h3>
+    
     <div class="form-group" style="margin: 20px 0px">
         <a href="/admin/questions/show" class="btn btn-primary btn-lg">Cancel</a>
         <button class="btn btn-success btn-lg" style="float: right" type="submit">Save</button>
