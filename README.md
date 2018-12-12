@@ -3,7 +3,7 @@ Our team created a CSCE120 Self-Evaluation Exam. The application we developed ha
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nidhisrh/Course-Evaluation-System)
 
-Heroku App URL - https://csce-120-evaluation.herokuapp.com
+Heroku App URL - https://csce120-evaluation.herokuapp.com
 
 ## Development Workflow
 We will be utilizing a simple version of Gitflow. [More Info](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).
