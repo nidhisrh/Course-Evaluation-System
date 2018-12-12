@@ -45,6 +45,7 @@ class StudentsController < ApplicationController
       #set session key
       session[:uin] = uin
       session[:admin] = nil
+      session[:ta] = nil
       return true
     end
   end

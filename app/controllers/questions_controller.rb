@@ -80,7 +80,7 @@ class QuestionsController < ApplicationController
     @score.save
     
     #puts $global_question_choice_counter
-    
+    flash[:success] = "Thanks for taking the test. Your score is " + score.to_s + " out of " + total_score.to_s
     redirect_to students_show_path()
   end
   
