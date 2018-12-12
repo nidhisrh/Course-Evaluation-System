@@ -124,6 +124,7 @@ Rails.application.routes.draw do
   post 'ta/login'
   post 'admin/changepassword'
   post 'admin/show'
+  post 'ta/show'
   
   match '/questions', to: 'questions#view', via: [:get, :post]
   

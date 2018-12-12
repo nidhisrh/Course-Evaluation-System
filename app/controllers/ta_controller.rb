@@ -31,6 +31,7 @@ class TaController < ApplicationController
         #set session keys
         session[:admin] = "login"
         session[:ta] = "login"
+        session[:uin] = nil
         return true
       end
     end
@@ -97,7 +98,7 @@ class TaController < ApplicationController
     if(!params[:section_number].nil? and unique_section(params[:section_number]))
       if(params[:section_number] == "")
         flash[:warning] = "Section number cannot be null"
-        redirect_to controller:'admin', action: 'show'
+        redirect_to controller:'ta', action: 'show'
       else
         @new_section = Section.new
         @new_section.section_number = params[:section_number]
